@@ -42,6 +42,10 @@ logger.debug("Save the sentiment scores")
 # print(final_data[["review", "sentiment_score"]].head())
 final_data.to_csv("movie_data_sentiment_analysis.csv", index=False)
 
+final_data = final_data.drop("review_url", axis=1)
+final_data = final_data.rename(columns={"name": "movie_name", "title": "review_title"})
+print(final_data.info())
+
 
 # walker = pyg.walk(final_data)
 logger.debug("Write to HTML")
